@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.Extension.Exception;
+using Microsoft.AspNetCore.Mvc;
 using School.Students.Application;
 using School.Students.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
@@ -39,6 +37,5 @@ namespace Api.Controllers
 
             return Ok(response);
         }
-
     }
 }

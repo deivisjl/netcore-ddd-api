@@ -1,4 +1,5 @@
 using Api.Extension.DependencyInjection;
+using Api.Extension.Exception;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +35,14 @@ namespace Api
             }
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .SetIsOriginAllowed(origin => true)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+
+            app.ConfigureExceptionHandler();
 
             app.UseAuthorization();
 
