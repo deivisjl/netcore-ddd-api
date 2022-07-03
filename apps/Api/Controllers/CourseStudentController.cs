@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using School.CoursesStudent.Application;
+using School.CoursesStudent.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,19 @@ namespace Api.Controllers
     [ApiController]
     public class CourseStudentController : ControllerBase
     {
+        private readonly CourseStudentCreate _courseStudentCreate;
+
+        public CourseStudentController(CourseStudentCreate courseStudentCreate)
+        {
+            _courseStudentCreate = courseStudentCreate;
+        }
+
+
         // GET: api/<CourseStudentController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<CourseStudentViewModel>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _courseStudentCreate.GetAll();
         }
 
         // GET api/<CourseStudentController>/5
@@ -28,8 +38,11 @@ namespace Api.Controllers
 
         // POST api/<CourseStudentController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> SaveCourseStudent([FromForm] CourseStudent courseStudent)
         {
+            await _courseStudentCreate.Save(courseStudent);
+
+            return Ok();
         }
 
         // PUT api/<CourseStudentController>/5

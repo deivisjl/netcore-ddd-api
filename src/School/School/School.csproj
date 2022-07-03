@@ -17,9 +17,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CoursesStudent\Application\" />
-    <Folder Include="CoursesStudent\Infraestructure\" />
-  </ItemGroup>
-
 </Project>

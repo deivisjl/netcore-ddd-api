@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using School.Courses.Application;
+using School.CoursesStudent.Application;
 using School.Students.Application;
 
 namespace Api.Extension.DependencyInjection
@@ -13,6 +14,9 @@ namespace Api.Extension.DependencyInjection
 
             services.AddScoped<CourseCreate, CourseCreate>();
             services.AddScoped<CourseFinder, CourseFinder>();
+
+            services.AddScoped<CourseStudentCreate, CourseStudentCreate>();
+            
 
             return services;
         }
