@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using School.Courses.Domain;
+using School.Courses.Infraestructure;
 using School.Shared;
 using School.Students.Domain;
 using School.Students.Infraestructure;
@@ -15,6 +17,7 @@ namespace Api.Extension.DependencyInjection
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IStudentRepository, MsSqlStudentRepository>();
+            services.AddScoped<ICourseRepository, MsSqlCourseRepository>();
 
             return services;
         }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using School.Courses.Domain;
+using School.CoursesStudent.Domain;
 using School.Helper;
 using School.Students.Domain;
 using System;
@@ -11,6 +13,8 @@ namespace School.Shared
     public class SchoolContext : DbContext
     { 
         public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<Course> Course { get; set; }
+        public virtual DbSet<CourseStudent> CourseStudent { get; set; }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options)
         {
 
